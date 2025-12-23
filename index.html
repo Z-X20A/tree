@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Happy Birthday</title>
+    <title>生日快乐</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Three.js -->
@@ -59,13 +59,13 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            /* 冰雪白光晕 */
-            text-shadow: 0 0 20px rgba(200, 230, 255, 0.9);
+            /* 绚丽的生日金光 */
+            text-shadow: 0 0 20px rgba(255, 223, 100, 0.8);
             color: #ffffff;
         }
 
         .glass-panel {
-            background: rgba(15, 23, 42, 0.65); /* 深蓝底色 */
+            background: rgba(20, 20, 30, 0.65);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
@@ -79,7 +79,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
         }
     </style>
 </head>
@@ -97,51 +97,51 @@
         <!-- Header -->
         <div class="flex justify-between items-start">
             <div class="glass-panel p-6 rounded-xl max-w-md transition-all duration-700 transform translate-y-0 opacity-100" id="intro-panel">
-                <h1 class="text-3xl text-white mb-2 font-bold tracking-widest">Merry Christmas</h1>
-                <p class="text-blue-100 text-xs mb-6 leading-relaxed border-l-2 border-blue-400 pl-3">
-                    请开启摄像头，用手势掌控魔法
+                <h1 class="text-3xl text-white mb-2 font-bold tracking-widest">HAPPY BIRTHDAY</h1>
+                <p class="text-pink-100 text-xs mb-6 leading-relaxed border-l-2 border-pink-400 pl-3">
+                    请开启摄像头，点亮你的生日愿望
                 </p>
                 
                 <div class="space-y-4">
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-gray-800/50 text-white border-white/30">
+                        <div class="instruction-icon bg-pink-600/50 text-white border-pink-300/30">
                             ✊
                         </div>
                         <div>
                             <p class="text-white text-sm font-bold uppercase tracking-wide">握拳 (Fist)</p>
-                            <p class="text-gray-400 text-xs">聚合水晶树</p>
+                            <p class="text-gray-400 text-xs">许愿 (聚合)</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-blue-900/40 text-blue-200 border-blue-400/30">
+                        <div class="instruction-icon bg-purple-600/40 text-purple-200 border-purple-400/30">
                             🖐
                         </div>
                         <div>
-                            <p class="text-blue-100 text-sm font-bold uppercase tracking-wide">张开手 (Open)</p>
-                            <p class="text-gray-400 text-xs">炸开粒子 / 移动视角</p>
+                            <p class="text-purple-100 text-sm font-bold uppercase tracking-wide">张开手 (Open)</p>
+                            <p class="text-gray-400 text-xs">狂欢 (炸开)</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-white/10 text-white border-white/30">
+                        <div class="instruction-icon bg-yellow-600/40 text-yellow-200 border-yellow-300/30">
                             👌
                         </div>
                         <div>
                             <p class="text-white text-sm font-bold uppercase tracking-wide">捏合 (Pinch)</p>
-                            <p class="text-gray-400 text-xs">食指瞄准抓取</p>
+                            <p class="text-gray-400 text-xs">拆礼物 (抓取照片/视频)</p>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-600 hover:to-slate-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-white/10 transition-all border border-white/20">
-                    开启体验
+                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-pink-700 to-purple-900 hover:from-pink-600 hover:to-purple-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-pink-500/20 transition-all border border-white/20">
+                    开始庆祝
                 </button>
-                <p id="loading-text" class="hidden text-xs text-center mt-3 text-blue-200 animate-pulse tracking-wide">正在校准传感器...</p>
+                <p id="loading-text" class="hidden text-xs text-center mt-3 text-pink-200 animate-pulse tracking-wide">正在布置派对现场...</p>
             </div>
 
             <!-- Upload Control -->
             <div class="glass-panel p-4 rounded-full ui-element hover:bg-white/10 transition-all cursor-pointer group active:scale-95" onclick="document.getElementById('photo-upload').click()">
                 <div class="flex flex-col items-center justify-center w-12 h-12">
-                    <span class="text-2xl text-gray-400 group-hover:text-white transition-colors">📷</span>
+                    <span class="text-2xl text-gray-400 group-hover:text-white transition-colors">🎂</span>
                 </div>
                 <!-- 允许选择多个图片，支持 jpg, png, webp, mp4 -->
                 <input type="file" id="photo-upload" multiple accept="image/*, video/mp4, video/webm, video/ogg" class="hidden">
@@ -150,8 +150,8 @@
 
         <!-- Feedback HUD -->
         <div class="flex flex-col items-center mb-8 gap-2">
-            <div id="gesture-feedback" class="glass-panel px-10 py-3 rounded-full text-blue-100 font-serif tracking-widest text-sm opacity-0 transition-opacity duration-300 border border-blue-500/30">
-                SYSTEM STANDBY
+            <div id="gesture-feedback" class="glass-panel px-10 py-3 rounded-full text-pink-100 font-serif tracking-widest text-sm opacity-0 transition-opacity duration-300 border border-pink-500/30">
+                MAKE A WISH
             </div>
             <p class="text-xs text-gray-500 font-mono opacity-50 uppercase">Use Index Finger to Aim</p>
         </div>
@@ -168,9 +168,9 @@
         const CONFIG = {
             particleCount: 1600,
             colors: {
-                green: 0x2F4F4F, // Dark Slate Green
-                crystal: 0xFFFFFF, // Pure White
-                red: 0xB22222,
+                green: 0xFFFFFF, // Pure White Crystals
+                gold: 0xFFD700,  // Gold Accents
+                red: 0xFF69B4,   // Hot Pink for Birthday
                 white: 0xFFFFFF
             },
             treeHeight: 35,
@@ -227,7 +227,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 0.8; // Cool tone exposure
+            renderer.toneMappingExposure = 0.8; 
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             
             maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -236,29 +236,29 @@
             // Post Processing
             const renderScene = new RenderPass(scene, camera);
             
-            // Bloom - Cool White/Blue Glow
+            // Bloom - Dreamy Glow
             bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-            bloomPass.threshold = 0.88; // Only bright crystals glow
-            bloomPass.strength = 1.8; // Strong glow
-            bloomPass.radius = 0.6;
+            bloomPass.threshold = 0.92; 
+            bloomPass.strength = 1.0; 
+            bloomPass.radius = 0.5;
 
             composer = new EffectComposer(renderer);
             composer.addPass(renderScene);
             composer.addPass(bloomPass);
 
-            // Lighting - COLD TONE
+            // Lighting
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
             scene.add(ambientLight);
             
-            // Main Light - Pure White
+            // Main Light - Cool White
             const spotLight = new THREE.SpotLight(0xffffff, 2000);
             spotLight.position.set(20, 50, 20);
             spotLight.decay = 2;
             spotLight.distance = 200;
             scene.add(spotLight);
             
-            // Rim Light - Ice Blue
-            const rimLight = new THREE.SpotLight(0x00ffff, 1000);
+            // Rim Light - Pink/Purple for Party Vibe
+            const rimLight = new THREE.SpotLight(0xff00ff, 1000);
             rimLight.position.set(-20, 20, -20);
             scene.add(rimLight);
 
@@ -287,30 +287,30 @@
             scene.add(cursorMesh);
         };
 
-        // --- Particle System (Crystal Theme) ---
+        // --- Particle System (Birthday Crystals) ---
         const createParticles = () => {
-            // White Crystal
+            // Crystal/Diamond
             const matCrystal = new THREE.MeshStandardMaterial({ 
                 color: 0xffffff, 
                 metalness: 0.9, 
                 roughness: 0.1, 
                 emissive: 0xffffff,
-                emissiveIntensity: 2.0 
+                emissiveIntensity: 1.5 
             });
             
-            // Slate Green
+            // Pastel Green
             const matGreen = new THREE.MeshStandardMaterial({ 
-                color: CONFIG.colors.green, 
+                color: 0x88ccaa, 
                 metalness: 0.2, 
                 roughness: 0.8 
             });
             
-            // Red Accents (Keep for contrast)
+            // Pink Accents
             const matRed = new THREE.MeshStandardMaterial({ 
                 color: CONFIG.colors.red, 
                 metalness: 0.5, 
                 roughness: 0.2, 
-                emissive: 0xff0000,
+                emissive: 0xff1493,
                 emissiveIntensity: 2.0 
             });
 
@@ -318,7 +318,6 @@
             const geomCube = new THREE.BoxGeometry(0.6, 0.6, 0.6);
             const geomCyl = new THREE.CylinderGeometry(0.1, 0.1, 1, 8);
             
-            // More crystals, fewer greens
             const meshCrystal = new THREE.InstancedMesh(geomSphere, matCrystal, 600);
             const meshGreen = new THREE.InstancedMesh(geomCube, matGreen, 800);
             const meshRed = new THREE.InstancedMesh(geomCyl, matRed, 200);
@@ -400,7 +399,7 @@
             pMesh.position.z = 0.08; 
             pMesh.name = "photo_surface"; 
             
-            // Frame Plane - White Frame
+            // Frame Plane - White
             const fWidth = width + 1; 
             const fHeight = height + 2.5; 
             const fGeo = new THREE.PlaneGeometry(fWidth, fHeight);
@@ -431,12 +430,13 @@
         };
 
         const createDefaultPhotos = () => {
+            // 生日主题默认图片
             const defaultContent = [
-                { type: 'image', url: 'https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=600&q=80' },
-                { type: 'image', url: 'https://images.unsplash.com/photo-1576919228636-1e796e624c9f?auto=format&fit=crop&w=600&q=80' },
-                { type: 'image', url: 'https://images.unsplash.com/photo-1512474932049-782abb8be2e9?auto=format&fit=crop&w=600&q=80' },
-                { type: 'image', url: 'https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&w=600&q=80' },
-                { type: 'image', url: 'https://images.unsplash.com/photo-1545629173-138374a27453?auto=format&fit=crop&w=600&q=80' }
+                { type: 'image', url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' }, // Cake
+                { type: 'image', url: 'https://images.unsplash.com/photo-1530103862676-de3c9a59af38?auto=format&fit=crop&w=600&q=80' }, // Balloons
+                { type: 'image', url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80' }, // Party
+                { type: 'image', url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' }, // Gift
+                { type: 'image', url: 'https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?auto=format&fit=crop&w=600&q=80' }  // Candles
             ];
 
             defaultContent.forEach((item, i) => {
@@ -455,7 +455,6 @@
                         createPhoto(texture, i, video);
                     };
                     video.onerror = () => {
-                        console.warn("Video failed to load");
                         createFallbackCard(i, "Video Error");
                     }
                 } else {
@@ -463,7 +462,7 @@
                         tex.colorSpace = THREE.SRGBColorSpace;
                         createPhoto(tex, i);
                     }, undefined, () => {
-                        createFallbackCard(i, "Noel");
+                        createFallbackCard(i, "B-Day");
                     });
                 }
             });
@@ -473,7 +472,7 @@
             const canvas = document.createElement('canvas');
             canvas.width = 512; canvas.height = 512;
             const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#1e3a8a'; // Blue fallback
+            ctx.fillStyle = '#FF69B4'; // Hot Pink
             ctx.fillRect(0,0,512,512);
             ctx.fillStyle = '#fff'; 
             ctx.font = '60px Arial';
@@ -588,7 +587,7 @@
                         if (STATE.mode === 'FOCUS') {
                             scaleTarget = 0.5;
                         } else if (group === hoveredPhoto) {
-                            scaleTarget = 1.15;
+                            scaleTarget = 1.2;
                             const dir = camera.position.clone().sub(target).normalize();
                             target = target.clone().add(dir.multiplyScalar(2));
                         }
