@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>生日快乐</title>
+    <title>生日快乐 (梦幻光晕版)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Three.js -->
@@ -59,16 +59,16 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            /* 绚丽的生日金光 */
-            text-shadow: 0 0 20px rgba(255, 223, 100, 0.8);
+            /* 增强一点光晕 */
+            text-shadow: 0 0 20px rgba(230, 230, 250, 0.8);
             color: #ffffff;
         }
 
         .glass-panel {
-            background: rgba(20, 20, 30, 0.65);
+            background: rgba(20, 15, 30, 0.65);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(230, 230, 250, 0.2);
+            box-shadow: 0 8px 32px rgba(147, 112, 219, 0.2);
         }
         
         .instruction-icon {
@@ -98,44 +98,44 @@
         <div class="flex justify-between items-start">
             <div class="glass-panel p-6 rounded-xl max-w-md transition-all duration-700 transform translate-y-0 opacity-100" id="intro-panel">
                 <h1 class="text-3xl text-white mb-2 font-bold tracking-widest">HAPPY BIRTHDAY</h1>
-                <p class="text-pink-100 text-xs mb-6 leading-relaxed border-l-2 border-pink-400 pl-3">
-                    请开启摄像头，点亮你的生日愿望
+                <p class="text-purple-100 text-xs mb-6 leading-relaxed border-l-2 border-purple-400 pl-3">
+                    烛光摇曳，请开启摄像头许愿
                 </p>
                 
                 <div class="space-y-4">
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-pink-600/50 text-white border-pink-300/30">
+                        <div class="instruction-icon bg-purple-900/40 text-purple-200 border-purple-500/20">
                             ✊
                         </div>
                         <div>
                             <p class="text-white text-sm font-bold uppercase tracking-wide">握拳 (Fist)</p>
-                            <p class="text-gray-400 text-xs">许愿 (聚合)</p>
+                            <p class="text-gray-400 text-xs">聚合许愿树</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-purple-600/40 text-purple-200 border-purple-400/30">
+                        <div class="instruction-icon bg-fuchsia-900/40 text-fuchsia-200 border-fuchsia-500/20">
                             🖐
                         </div>
                         <div>
-                            <p class="text-purple-100 text-sm font-bold uppercase tracking-wide">张开手 (Open)</p>
-                            <p class="text-gray-400 text-xs">狂欢 (炸开)</p>
+                            <p class="text-fuchsia-100 text-sm font-bold uppercase tracking-wide">张开手 (Open)</p>
+                            <p class="text-gray-400 text-xs">漫天星光 (炸开)</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="instruction-icon bg-yellow-600/40 text-yellow-200 border-yellow-300/30">
+                        <div class="instruction-icon bg-indigo-900/40 text-indigo-200 border-indigo-500/20">
                             👌
                         </div>
                         <div>
                             <p class="text-white text-sm font-bold uppercase tracking-wide">捏合 (Pinch)</p>
-                            <p class="text-gray-400 text-xs">拆礼物 (抓取照片/视频)</p>
+                            <p class="text-gray-400 text-xs">查看回忆</p>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-pink-700 to-purple-900 hover:from-pink-600 hover:to-purple-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-pink-500/20 transition-all border border-white/20">
-                    开始庆祝
+                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-purple-800 to-indigo-900 hover:from-purple-700 hover:to-indigo-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-purple-900/40 transition-all border border-white/10">
+                    开启派对
                 </button>
-                <p id="loading-text" class="hidden text-xs text-center mt-3 text-pink-200 animate-pulse tracking-wide">正在布置派对现场...</p>
+                <p id="loading-text" class="hidden text-xs text-center mt-3 text-purple-300 animate-pulse tracking-wide">正在点燃蜡烛...</p>
             </div>
 
             <!-- Upload Control -->
@@ -143,14 +143,13 @@
                 <div class="flex flex-col items-center justify-center w-12 h-12">
                     <span class="text-2xl text-gray-400 group-hover:text-white transition-colors">🎂</span>
                 </div>
-                <!-- 允许选择多个图片，支持 jpg, png, webp, mp4 -->
                 <input type="file" id="photo-upload" multiple accept="image/*, video/mp4, video/webm, video/ogg" class="hidden">
             </div>
         </div>
 
         <!-- Feedback HUD -->
         <div class="flex flex-col items-center mb-8 gap-2">
-            <div id="gesture-feedback" class="glass-panel px-10 py-3 rounded-full text-pink-100 font-serif tracking-widest text-sm opacity-0 transition-opacity duration-300 border border-pink-500/30">
+            <div id="gesture-feedback" class="glass-panel px-10 py-3 rounded-full text-purple-100 font-serif tracking-widest text-sm opacity-0 transition-opacity duration-300 border border-purple-500/30">
                 MAKE A WISH
             </div>
             <p class="text-xs text-gray-500 font-mono opacity-50 uppercase">Use Index Finger to Aim</p>
@@ -168,9 +167,9 @@
         const CONFIG = {
             particleCount: 1600,
             colors: {
-                green: 0xFFFFFF, // Pure White Crystals
-                gold: 0xFFD700,  // Gold Accents
-                red: 0xFF69B4,   // Hot Pink for Birthday
+                green: 0xE6E6FA, // Lavender (Base Crystal)
+                gold: 0xD8BFD8,  // Thistle
+                red: 0x9370DB,   // Medium Purple
                 white: 0xFFFFFF
             },
             treeHeight: 35,
@@ -227,7 +226,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 0.8; 
+            renderer.toneMappingExposure = 0.8; // 0.6 -> 0.8: 稍微提亮一点，更通透
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             
             maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -236,11 +235,11 @@
             // Post Processing
             const renderScene = new RenderPass(scene, camera);
             
-            // Bloom - Dreamy Glow
+            // Bloom - Dreamy Glow with slight Halo
             bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-            bloomPass.threshold = 0.92; 
-            bloomPass.strength = 1.0; 
-            bloomPass.radius = 0.5;
+            bloomPass.threshold = 0.85; // 降低阈值，让更多水晶产生微光
+            bloomPass.strength = 1.5;   // 适度增强辉光 (1.2 -> 1.5)
+            bloomPass.radius = 0.6;     // 光晕稍微扩散一点
 
             composer = new EffectComposer(renderer);
             composer.addPass(renderScene);
@@ -250,15 +249,15 @@
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
             scene.add(ambientLight);
             
-            // Main Light - Cool White
-            const spotLight = new THREE.SpotLight(0xffffff, 2000);
+            // Main Light - Bright White
+            const spotLight = new THREE.SpotLight(0xffffff, 2000); // 增强主光 (1500 -> 2000)
             spotLight.position.set(20, 50, 20);
             spotLight.decay = 2;
             spotLight.distance = 200;
             scene.add(spotLight);
             
-            // Rim Light - Pink/Purple for Party Vibe
-            const rimLight = new THREE.SpotLight(0xff00ff, 1000);
+            // Rim Light - Lavender Purple
+            const rimLight = new THREE.SpotLight(0x9370DB, 1200); // 增强轮廓光
             rimLight.position.set(-20, 20, -20);
             scene.add(rimLight);
 
@@ -275,9 +274,9 @@
         const createCursor = () => {
             const geometry = new THREE.RingGeometry(0.8, 1, 32);
             const material = new THREE.MeshBasicMaterial({ 
-                color: 0xffffff, 
+                color: 0xE6E6FA, 
                 transparent: true, 
-                opacity: 0.8,
+                opacity: 0.7, 
                 side: THREE.DoubleSide,
                 depthTest: false 
             });
@@ -287,44 +286,54 @@
             scene.add(cursorMesh);
         };
 
-        // --- Particle System (Birthday Crystals) ---
+        // --- Particle System ---
         const createParticles = () => {
-            // Crystal/Diamond
+            // Crystal - Glows slightly
             const matCrystal = new THREE.MeshStandardMaterial({ 
-                color: 0xffffff, 
+                color: 0xE6E6FA, 
                 metalness: 0.9, 
                 roughness: 0.1, 
-                emissive: 0xffffff,
-                emissiveIntensity: 1.5 
+                emissive: 0xE6E6FA,
+                emissiveIntensity: 1.2 // 稍微增强水晶自发光
             });
             
-            // Pastel Green
+            // Accents
             const matGreen = new THREE.MeshStandardMaterial({ 
-                color: 0x88ccaa, 
-                metalness: 0.2, 
-                roughness: 0.8 
+                color: 0x9370DB, 
+                metalness: 0.5, 
+                roughness: 0.4,
+                emissive: 0x9370DB,
+                emissiveIntensity: 0.6
             });
             
-            // Pink Accents
-            const matRed = new THREE.MeshStandardMaterial({ 
-                color: CONFIG.colors.red, 
-                metalness: 0.5, 
-                roughness: 0.2, 
-                emissive: 0xff1493,
-                emissiveIntensity: 2.0 
+            // Candle Body
+            const matCandle = new THREE.MeshStandardMaterial({ 
+                color: 0xFFFAF0, 
+                roughness: 0.3, 
+                metalness: 0.0
+            });
+
+            // Flame - Bright and Glowy
+            const matFlame = new THREE.MeshStandardMaterial({ 
+                color: 0xFFA500, 
+                emissive: 0xFF4500, 
+                emissiveIntensity: 5.0 // 增强烛光亮度 (3.0 -> 5.0)
             });
 
             const geomSphere = new THREE.SphereGeometry(0.35, 12, 12);
             const geomCube = new THREE.BoxGeometry(0.6, 0.6, 0.6);
-            const geomCyl = new THREE.CylinderGeometry(0.1, 0.1, 1, 8);
+            const geomCandle = new THREE.CylinderGeometry(0.1, 0.1, 1.0, 8);
+            const geomFlame = new THREE.ConeGeometry(0.08, 0.25, 8);
             
-            const meshCrystal = new THREE.InstancedMesh(geomSphere, matCrystal, 600);
-            const meshGreen = new THREE.InstancedMesh(geomCube, matGreen, 800);
-            const meshRed = new THREE.InstancedMesh(geomCyl, matRed, 200);
+            const meshCrystal = new THREE.InstancedMesh(geomSphere, matCrystal, 700);
+            const meshGreen = new THREE.InstancedMesh(geomCube, matGreen, 600);
+            const meshCandle = new THREE.InstancedMesh(geomCandle, matCandle, 200);
+            const meshFlame = new THREE.InstancedMesh(geomFlame, matFlame, 200);
 
             scene.add(meshCrystal);
             scene.add(meshGreen);
-            scene.add(meshRed);
+            scene.add(meshCandle);
+            scene.add(meshFlame);
 
             const distribute = (mesh, type, offsetIndex) => {
                 const count = mesh.count;
@@ -343,29 +352,39 @@
                     const cz = (Math.random() - 0.5) * 30;
 
                     dummy.position.set(tx, y, tz);
-                    dummy.scale.setScalar(Math.random() * 0.5 + 0.5);
-                    dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+                    
+                    if (type === 'candle' || type === 'flame') {
+                        dummy.rotation.set(0, Math.random() * Math.PI, 0); 
+                        dummy.scale.setScalar(1.0);
+                        if (type === 'flame') dummy.position.y += 0.6; 
+                    } else {
+                        dummy.scale.setScalar(Math.random() * 0.5 + 0.5);
+                        dummy.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, 0);
+                    }
+
                     dummy.updateMatrix();
                     mesh.setMatrixAt(i, dummy.matrix);
 
                     particles.push({
                         mesh: mesh,
                         index: i,
-                        treePos: new THREE.Vector3(tx, y, tz),
+                        treePos: new THREE.Vector3(tx, y, tz).add(type === 'flame' ? new THREE.Vector3(0, 0.6, 0) : new THREE.Vector3(0,0,0)),
                         chaosPos: new THREE.Vector3(cx, cy, cz),
                         currentPos: new THREE.Vector3(tx, y, tz),
                         wobbleOffset: Math.random() * 100,
                         wobbleSpeed: Math.random() * 0.5 + 0.5,
                         baseScale: dummy.scale.clone(),
                         baseRotation: dummy.rotation.clone(),
-                        isLight: (mesh === meshCrystal || mesh === meshRed)
+                        isLight: (type === 'crystal'),
+                        isFlame: (type === 'flame')
                     });
                 }
             };
 
             distribute(meshCrystal, 'crystal', 0);
             distribute(meshGreen, 'green', 1);
-            distribute(meshRed, 'red', 2);
+            distribute(meshCandle, 'candle', 2);
+            distribute(meshFlame, 'flame', 2);
         };
 
         // --- Photo/Video System ---
@@ -399,11 +418,11 @@
             pMesh.position.z = 0.08; 
             pMesh.name = "photo_surface"; 
             
-            // Frame Plane - White
+            // Frame Plane - Ghost White
             const fWidth = width + 1; 
             const fHeight = height + 2.5; 
             const fGeo = new THREE.PlaneGeometry(fWidth, fHeight);
-            const fMat = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+            const fMat = new THREE.MeshBasicMaterial({ color: 0xF8F8FF, side: THREE.DoubleSide }); 
             const fMesh = new THREE.Mesh(fGeo, fMat);
             
             pMesh.position.y = (fHeight - height) / 2 - 0.5;
@@ -430,13 +449,12 @@
         };
 
         const createDefaultPhotos = () => {
-            // 生日主题默认图片
             const defaultContent = [
-                { type: 'image', url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' }, // Cake
-                { type: 'image', url: 'https://images.unsplash.com/photo-1530103862676-de3c9a59af38?auto=format&fit=crop&w=600&q=80' }, // Balloons
-                { type: 'image', url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80' }, // Party
-                { type: 'image', url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' }, // Gift
-                { type: 'image', url: 'https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?auto=format&fit=crop&w=600&q=80' }  // Candles
+                { type: 'image', url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1530103862676-de3c9a59af38?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?auto=format&fit=crop&w=600&q=80' }
             ];
 
             defaultContent.forEach((item, i) => {
@@ -472,7 +490,7 @@
             const canvas = document.createElement('canvas');
             canvas.width = 512; canvas.height = 512;
             const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#FF69B4'; // Hot Pink
+            ctx.fillStyle = '#9370DB'; // Purple
             ctx.fillRect(0,0,512,512);
             ctx.fillStyle = '#fff'; 
             ctx.font = '60px Arial';
@@ -486,7 +504,8 @@
         // --- Logic Update ---
         const updateState = (delta, time) => {
             
-            const targetBloomStrength = (STATE.mode === 'FOCUS') ? 0.0 : 1.0;
+            // Dynamic Bloom Logic
+            const targetBloomStrength = (STATE.mode === 'FOCUS') ? 0.0 : 1.5;
             bloomPass.strength += (targetBloomStrength - bloomPass.strength) * 4.0 * delta;
 
             const dummy = new THREE.Object3D();
@@ -523,19 +542,22 @@
 
                     if (STATE.isPinching) {
                         cursorMesh.scale.set(0.5, 0.5, 0.5);
-                        cursorMesh.material.color.set(0xff0000);
+                        cursorMesh.material.color.set(0x9370DB);
                     } else {
                         cursorMesh.scale.set(1, 1, 1);
-                        cursorMesh.material.color.set(0xffffff);
+                        cursorMesh.material.color.set(0xE6E6FA);
                     }
 
                     // Rotation from Palm Center
                     if (STATE.mode === 'EXPLODE') {
+                        // Wide rotation
                         const targetRot = STATE.handPosition.x * 2.0; 
                         STATE.rotation += (targetRot - STATE.rotation) * 2.0 * delta;
                         
-                        camera.position.x = Math.sin(STATE.rotation) * CONFIG.camZ;
-                        camera.position.z = Math.cos(STATE.rotation) * CONFIG.camZ;
+                        // Adaptive Camera
+                        const camDist = getResponsiveCamZ();
+                        camera.position.x = Math.sin(STATE.rotation) * camDist;
+                        camera.position.z = Math.cos(STATE.rotation) * camDist;
                         camera.lookAt(0, 0, 0);
                     }
                 } else {
@@ -543,8 +565,9 @@
                 }
             } else {
                 STATE.rotation += delta * 0.2;
-                camera.position.x = Math.sin(STATE.rotation) * CONFIG.camZ;
-                camera.position.z = Math.cos(STATE.rotation) * CONFIG.camZ;
+                const camDist = getResponsiveCamZ();
+                camera.position.x = Math.sin(STATE.rotation) * camDist;
+                camera.position.z = Math.cos(STATE.rotation) * camDist;
                 camera.lookAt(0, 5, 0);
                 cursorMesh.visible = false;
             }
@@ -558,8 +581,17 @@
                 if (STATE.mode !== 'TREE') dummy.position.y += wobble;
                 const scaleTarget = (STATE.mode === 'TREE') ? 1.0 : 0.6;
                 dummy.scale.setScalar(scaleTarget);
+                
+                // FLAME ANIMATION
+                if (p.isFlame) {
+                    const flicker = Math.sin(time * 25 + p.index) * 0.2 + 1.0;
+                    dummy.scale.multiplyScalar(flicker);
+                    dummy.position.x += (Math.random()-0.5) * 0.02;
+                }
+
                 dummy.lookAt(camera.position); 
-                if (STATE.mode === 'TREE') dummy.rotation.set(0,0,0); 
+                if (STATE.mode === 'TREE' && !p.isFlame) dummy.rotation.set(0,0,0);
+                
                 dummy.updateMatrix();
                 p.mesh.setMatrixAt(p.index, dummy.matrix);
             });
@@ -582,12 +614,11 @@
                         group.scale.lerp(new THREE.Vector3(1.5, 1.5, 1.5), lerpSpeed);
                     } else {
                         let target = group.userData.chaosPos.clone();
-                        
                         let scaleTarget = 1.0;
                         if (STATE.mode === 'FOCUS') {
                             scaleTarget = 0.5;
                         } else if (group === hoveredPhoto) {
-                            scaleTarget = 1.2;
+                            scaleTarget = 1.15;
                             const dir = camera.position.clone().sub(target).normalize();
                             target = target.clone().add(dir.multiplyScalar(2));
                         }
@@ -608,9 +639,22 @@
             composer.render();
         };
 
-        const onWindowResize = () => {
+        const getResponsiveCamZ = () => {
+            const aspect = window.innerWidth / window.innerHeight;
+            if (aspect < 1.0) {
+                return CONFIG.camZ / aspect * 0.8;
+            }
+            return CONFIG.camZ;
+        };
+
+        const updateCameraPosition = () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
+            camera.position.z = getResponsiveCamZ();
+        };
+
+        const onWindowResize = () => {
+            updateCameraPosition();
             renderer.setSize(window.innerWidth, window.innerHeight);
             composer.setSize(window.innerWidth, window.innerHeight);
         };
@@ -650,11 +694,19 @@
                 STATE.handDetected = true;
                 const lm = results.multiHandLandmarks[0];
                 
-                // Rotation: Palm Center
-                let palmX = (1 - lm[9].x) * 2 - 1; 
-                STATE.handPosition.x = Math.max(-1, Math.min(1, palmX * 1.5)); 
+                let ndcX = (1 - lm[9].x) * 2 - 1; 
+                let ndcY = (1 - lm[9].y) * 2 - 1;
+                
+                ndcX *= 1.3;
+                ndcY *= 1.3;
+                ndcY += 0.2; 
 
-                // Cursor: Index Tip
+                ndcX = Math.max(-1, Math.min(1, ndcX));
+                ndcY = Math.max(-1, Math.min(1, ndcY));
+
+                STATE.handPosition.x = ndcX;
+                STATE.handPosition.y = ndcY;
+
                 let tipX = (1 - lm[8].x) * 2 - 1; 
                 let tipY = (1 - lm[8].y) * 2 - 1;
                 tipX *= 1.3; tipY *= 1.3; tipY += 0.2; 
@@ -732,13 +784,13 @@
                         STATE.mode = 'FOCUS';
                     }
                 }
-                updateFeedback("PINCH: GRAB MEMORY", "red");
+                updateFeedback("PINCH: GRAB MEMORY", "purple");
             } else if (gesture === 'FIST') {
                 STATE.isPinching = false;
                 STATE.mode = 'TREE';
                 if(focusedPhoto && focusedPhoto.userData.video) focusedPhoto.userData.video.muted = true;
                 focusedPhoto = null;
-                updateFeedback("FIST: ASSEMBLE", "green");
+                updateFeedback("FIST: ASSEMBLE", "blue");
             } else if (gesture === 'OPEN') {
                 STATE.isPinching = false;
                 if (STATE.mode === 'FOCUS') {
@@ -748,15 +800,15 @@
                 } else if (STATE.mode === 'TREE') {
                     STATE.mode = 'EXPLODE';
                 }
-                updateFeedback("OPEN: CHAOS MODE", "yellow");
+                updateFeedback("OPEN: CHAOS MODE", "pink");
             }
         };
 
         const updateFeedback = (text, colorKey) => {
             const colors = {
-                red: "text-white border-red-500/50 shadow-red-500/30 bg-red-900/20",
-                green: "text-white border-green-500/50 shadow-green-500/30 bg-green-900/20",
-                yellow: "text-white border-blue-500/50 shadow-blue-500/30 bg-blue-900/20",
+                purple: "text-purple-200 border-purple-500/50 shadow-purple-500/30 bg-purple-900/40",
+                blue: "text-indigo-200 border-indigo-500/50 shadow-indigo-500/30 bg-indigo-900/40",
+                pink: "text-fuchsia-200 border-fuchsia-500/50 shadow-fuchsia-500/30 bg-fuchsia-900/40",
                 gray: "text-gray-400 border-gray-500/20 shadow-none bg-black/20"
             };
             feedbackEl.textContent = text;
