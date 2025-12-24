@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>生日快乐 (梦幻光晕版)</title>
+    <title>生日快乐 (柔光水晶版)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Three.js -->
@@ -59,16 +59,15 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            /* 增强一点光晕 */
-            text-shadow: 0 0 20px rgba(230, 230, 250, 0.8);
+            text-shadow: 0 0 15px rgba(230, 230, 250, 0.6);
             color: #ffffff;
         }
 
         .glass-panel {
-            background: rgba(20, 15, 30, 0.65);
+            background: rgba(15, 10, 25, 0.65);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(230, 230, 250, 0.2);
-            box-shadow: 0 8px 32px rgba(147, 112, 219, 0.2);
+            border: 1px solid rgba(230, 230, 250, 0.15);
+            box-shadow: 0 8px 32px rgba(147, 112, 219, 0.15);
         }
         
         .instruction-icon {
@@ -79,7 +78,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
         }
     </style>
 </head>
@@ -132,7 +131,7 @@
                     </div>
                 </div>
 
-                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-purple-800 to-indigo-900 hover:from-purple-700 hover:to-indigo-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-purple-900/40 transition-all border border-white/10">
+                <button id="start-btn" class="ui-element mt-8 w-full py-3 bg-gradient-to-r from-purple-800 to-indigo-900 hover:from-purple-700 hover:to-indigo-800 text-white font-serif tracking-widest text-sm uppercase rounded shadow-lg shadow-purple-900/30 transition-all border border-white/10">
                     开启派对
                 </button>
                 <p id="loading-text" class="hidden text-xs text-center mt-3 text-purple-300 animate-pulse tracking-wide">正在点燃蜡烛...</p>
@@ -226,7 +225,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 0.8; // 0.6 -> 0.8: 稍微提亮一点，更通透
+            renderer.toneMappingExposure = 0.7; // 降低曝光 (从1.1 -> 0.7)
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             
             maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -235,29 +234,29 @@
             // Post Processing
             const renderScene = new RenderPass(scene, camera);
             
-            // Bloom - Dreamy Glow with slight Halo
+            // Bloom - Soft & Dreamy Glow
             bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-            bloomPass.threshold = 0.85; // 降低阈值，让更多水晶产生微光
-            bloomPass.strength = 1.5;   // 适度增强辉光 (1.2 -> 1.5)
-            bloomPass.radius = 0.6;     // 光晕稍微扩散一点
+            bloomPass.threshold = 0.85; // 提高阈值，减少泛白
+            bloomPass.strength = 1.2;   // 降低辉光强度 (从2.5 -> 1.2)
+            bloomPass.radius = 0.6;
 
             composer = new EffectComposer(renderer);
             composer.addPass(renderScene);
             composer.addPass(bloomPass);
 
             // Lighting
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
             scene.add(ambientLight);
             
-            // Main Light - Bright White
-            const spotLight = new THREE.SpotLight(0xffffff, 2000); // 增强主光 (1500 -> 2000)
+            // Main Light - Pure White
+            const spotLight = new THREE.SpotLight(0xffffff, 2000);
             spotLight.position.set(20, 50, 20);
             spotLight.decay = 2;
             spotLight.distance = 200;
             scene.add(spotLight);
             
-            // Rim Light - Lavender Purple
-            const rimLight = new THREE.SpotLight(0x9370DB, 1200); // 增强轮廓光
+            // Rim Light - Lavender
+            const rimLight = new THREE.SpotLight(0xE6E6FA, 1000);
             rimLight.position.set(-20, 20, -20);
             scene.add(rimLight);
 
@@ -276,7 +275,7 @@
             const material = new THREE.MeshBasicMaterial({ 
                 color: 0xE6E6FA, 
                 transparent: true, 
-                opacity: 0.7, 
+                opacity: 0.6, 
                 side: THREE.DoubleSide,
                 depthTest: false 
             });
@@ -288,22 +287,22 @@
 
         // --- Particle System ---
         const createParticles = () => {
-            // Crystal - Glows slightly
+            // Crystal - Soft Lavender Glow
             const matCrystal = new THREE.MeshStandardMaterial({ 
                 color: 0xE6E6FA, 
                 metalness: 0.9, 
                 roughness: 0.1, 
                 emissive: 0xE6E6FA,
-                emissiveIntensity: 1.2 // 稍微增强水晶自发光
+                emissiveIntensity: 1.5 // 适度自发光 (从3.5降回1.5)
             });
             
-            // Accents
+            // Accents - Purple
             const matGreen = new THREE.MeshStandardMaterial({ 
                 color: 0x9370DB, 
-                metalness: 0.5, 
-                roughness: 0.4,
+                metalness: 0.8, 
+                roughness: 0.2,
                 emissive: 0x9370DB,
-                emissiveIntensity: 0.6
+                emissiveIntensity: 1.0 // 降低亮度
             });
             
             // Candle Body
@@ -313,11 +312,11 @@
                 metalness: 0.0
             });
 
-            // Flame - Bright and Glowy
+            // Flame - Bright but not blinding
             const matFlame = new THREE.MeshStandardMaterial({ 
                 color: 0xFFA500, 
                 emissive: 0xFF4500, 
-                emissiveIntensity: 5.0 // 增强烛光亮度 (3.0 -> 5.0)
+                emissiveIntensity: 4.0 // 降低烛火亮度 (从8.0降回4.0)
             });
 
             const geomSphere = new THREE.SphereGeometry(0.35, 12, 12);
@@ -418,7 +417,7 @@
             pMesh.position.z = 0.08; 
             pMesh.name = "photo_surface"; 
             
-            // Frame Plane - Ghost White
+            // Frame Plane
             const fWidth = width + 1; 
             const fHeight = height + 2.5; 
             const fGeo = new THREE.PlaneGeometry(fWidth, fHeight);
@@ -450,12 +449,11 @@
 
         const createDefaultPhotos = () => {
             const defaultContent = [
-                { type: 'image', url: './101ba95420f7aeef4f194fa892365080.jpg' },
-                { type: 'image', url: './28370abbadf5d1cf7140a93b85b6c0cd.jpg' },
-                { type: 'image', url: './3e5ba0f0b431fb52c4b767956c858eef.jpg' },
-                { type: 'image', url: './82238c91fc11d44c4815c4c944fa6324.jpg' },
-                { type: 'image', url: './88302b2bb1d1067ddc904e2ff12e334b.jpg' },
-                { type: 'image', url: './9ebde481309129d26b71d96a37b348b0.jpg' }
+                { type: 'image', url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1530103862676-de3c9a59af38?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80' },
+                { type: 'image', url: 'https://images.unsplash.com/photo-1602631985686-1bb0e6a8696e?auto=format&fit=crop&w=600&q=80' }
             ];
 
             defaultContent.forEach((item, i) => {
@@ -506,7 +504,7 @@
         const updateState = (delta, time) => {
             
             // Dynamic Bloom Logic
-            const targetBloomStrength = (STATE.mode === 'FOCUS') ? 0.0 : 1.5;
+            const targetBloomStrength = (STATE.mode === 'FOCUS') ? 0.0 : 1.2; // 柔和辉光
             bloomPass.strength += (targetBloomStrength - bloomPass.strength) * 4.0 * delta;
 
             const dummy = new THREE.Object3D();
@@ -683,31 +681,71 @@
                 onFrame: async () => await hands.send({image: videoElement}),
                 width: 640, height: 480
             });
-            await cameraUtils.start();
-
-            document.getElementById('intro-panel').classList.add('opacity-0');
-            setTimeout(()=> document.getElementById('intro-panel').style.display = 'none', 700);
-            feedbackEl.style.opacity = '1';
+            
+            // ERROR HANDLING & MOUSE FALLBACK
+            try {
+                await cameraUtils.start();
+                document.getElementById('intro-panel').classList.add('opacity-0');
+                setTimeout(()=> document.getElementById('intro-panel').style.display = 'none', 700);
+                feedbackEl.style.opacity = '1';
+            } catch (err) {
+                console.warn("Camera failed, falling back to mouse", err);
+                loadingText.textContent = "未检测到摄像头，已切换至鼠标模式 (按空格键切换形态)";
+                loadingText.classList.remove('text-purple-200');
+                loadingText.classList.add('text-red-400');
+                
+                setTimeout(() => {
+                    document.getElementById('intro-panel').classList.add('opacity-0');
+                    setTimeout(()=> document.getElementById('intro-panel').style.display = 'none', 700);
+                    feedbackEl.style.opacity = '1';
+                    enableMouseInteraction();
+                }, 1500);
+            }
         });
+
+        const enableMouseInteraction = () => {
+            STATE.handDetected = true;
+            feedbackEl.innerText = "MOUSE MODE";
+
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) * 2 - 1;
+                const y = -(e.clientY / window.innerHeight) * 2 + 1;
+                
+                STATE.handPosition.x = x * 1.5; 
+                STATE.cursorPosition.x = x * 1.3; 
+                STATE.cursorPosition.y = y * 1.3 + 0.2;
+            });
+
+            document.addEventListener('mousedown', () => {
+                STATE.isPinching = true;
+                executeState('PINCH');
+            });
+
+            document.addEventListener('mouseup', () => {
+                STATE.isPinching = false;
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    if (STATE.mode === 'TREE') {
+                        executeState('OPEN');
+                    } else {
+                        executeState('FIST');
+                    }
+                }
+            });
+        };
 
         const onHandsResults = (results) => {
             if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
                 STATE.handDetected = true;
                 const lm = results.multiHandLandmarks[0];
                 
-                let ndcX = (1 - lm[9].x) * 2 - 1; 
-                let ndcY = (1 - lm[9].y) * 2 - 1;
-                
-                ndcX *= 1.3;
-                ndcY *= 1.3;
-                ndcY += 0.2; 
+                // Palm for Rotation
+                let palmX = (1 - lm[9].x) * 2 - 1; 
+                STATE.handPosition.x = Math.max(-1, Math.min(1, palmX * 1.5)); 
 
-                ndcX = Math.max(-1, Math.min(1, ndcX));
-                ndcY = Math.max(-1, Math.min(1, ndcY));
-
-                STATE.handPosition.x = ndcX;
-                STATE.handPosition.y = ndcY;
-
+                // Cursor: Index
                 let tipX = (1 - lm[8].x) * 2 - 1; 
                 let tipY = (1 - lm[8].y) * 2 - 1;
                 tipX *= 1.3; tipY *= 1.3; tipY += 0.2; 
@@ -791,7 +829,7 @@
                 STATE.mode = 'TREE';
                 if(focusedPhoto && focusedPhoto.userData.video) focusedPhoto.userData.video.muted = true;
                 focusedPhoto = null;
-                updateFeedback("FIST: ASSEMBLE", "blue");
+                updateFeedback("FIST: ASSEMBLE", "purple");
             } else if (gesture === 'OPEN') {
                 STATE.isPinching = false;
                 if (STATE.mode === 'FOCUS') {
@@ -801,15 +839,13 @@
                 } else if (STATE.mode === 'TREE') {
                     STATE.mode = 'EXPLODE';
                 }
-                updateFeedback("OPEN: CHAOS MODE", "pink");
+                updateFeedback("OPEN: CHAOS MODE", "purple");
             }
         };
 
         const updateFeedback = (text, colorKey) => {
             const colors = {
                 purple: "text-purple-200 border-purple-500/50 shadow-purple-500/30 bg-purple-900/40",
-                blue: "text-indigo-200 border-indigo-500/50 shadow-indigo-500/30 bg-indigo-900/40",
-                pink: "text-fuchsia-200 border-fuchsia-500/50 shadow-fuchsia-500/30 bg-fuchsia-900/40",
                 gray: "text-gray-400 border-gray-500/20 shadow-none bg-black/20"
             };
             feedbackEl.textContent = text;
